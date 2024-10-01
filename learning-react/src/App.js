@@ -11,9 +11,13 @@ function App() {
     { id: "4", date: new Date(2023, 1, 14), title: "Laptop", price: 200, location:"Mumbai" },
   ];
 
+  const saveExpenseDataApp=(expenseDataFromNewExpense)=>{
+    console.log(expenseDataFromNewExpense);
+  }
+
   return (
     <div>
-      <NewExpense />
+       <NewExpense onAddExpense={saveExpenseDataApp}/>
       <Expenses expenses={expenses}/>
     </div>
   );
