@@ -3,6 +3,7 @@ import ExpenseItem from './ExpenseItem';
 import './Expenses.css'
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesChart from './ExpensesChart';
 
 const Expense = (props) => {
     const expenses=props.expenses;
@@ -15,29 +16,15 @@ const Expense = (props) => {
       setFilteredYear(selectedYear);
     }
 
-    let expensesContent = <p>No expenses found</p>;
-
-    if (filteredExpenses.length > 0) {
-      expensesContent = filteredExpenses.map((expense) => {
-        return (
-          <>
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            date={expense.date}
-            price={expense.price}
-          />
-            { filteredExpenses.length===1 && 
-            <p>Only one expense here. Please add more</p>}
-            </>
-        );
-      });
-    }
   return (
-    <Card className='expenses'>
-      <ExpensesFilter selected={filteredYear} onChangeFilter={changeFilterHandler}/>
-       {expensesContent}
-    </Card>
+    <Card className="expenses">
+    <ExpensesFilter
+      selected={filteredYear}
+      onChangeFilter={changeFilterHandler}
+    />
+    <ExpensesChart filteredData={filteredExpenses}/>
+    <ExpenseItem items={filteredExpenses} />
+  </Card>
   )
 }
 
