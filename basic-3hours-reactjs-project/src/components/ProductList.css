@@ -1,0 +1,10 @@
+.list{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+.list-btn{
+    margin-left:10px;
+}
+

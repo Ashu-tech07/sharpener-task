@@ -1,0 +1,12 @@
+.form{
+    margin: 15px;   
+}
+
+.form label{
+    margin-left:5px;
+    margin-right: 5px;
+}
+
+.form select{
+    margin-right:5px;
+}

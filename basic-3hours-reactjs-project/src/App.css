@@ -1,0 +1,9 @@
+.show_item{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .list-item h3{
+    margin-left: 15px;
+  }
