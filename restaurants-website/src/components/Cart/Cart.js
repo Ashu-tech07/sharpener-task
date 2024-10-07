@@ -3,7 +3,7 @@ import classes from './Cart.module.css'
 import Modal from '../UI/Modal'
 const Cart = (props) => {
     return (
-        <Modal>
+        <Modal hideCartHandler={props.hideCartHandler}>
             {
                 <ul className={classes["car-items"]}>
                     {[{ id: "c1", name: "Shushi", amount: 2, price: 12.99 }].map((item) => (
@@ -16,7 +16,7 @@ const Cart = (props) => {
                 <span>35.62</span>
             </div>
             <div className={classes.actions}>
-                <button className={classes["buttton--alt"]}>close</button>
+                <button className={classes["buttton--alt"]} onClick={props.hideCartHandler}>close</button>
                 <button className={classes.buttom}>Order</button>
             </div>
         </Modal>
