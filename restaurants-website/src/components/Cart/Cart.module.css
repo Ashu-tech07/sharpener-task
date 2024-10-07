@@ -5,6 +5,19 @@
     max-height: 20rem;
     overflow: auto;
   }
+  .cart-items li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-items li:last-child {
+    border-bottom: none; /* Remove border for the last item */
+  }
+  .cart-items li span {
+    font-weight: bold;
+  }
   .total {
     display: flex;
     justify-content: space-between;
@@ -15,6 +28,8 @@
   }
   .actions {
     text-align: right;
+    display: flex;
+    justify-content: flex-end;
   }
   .actions button {
     font: inherit;
