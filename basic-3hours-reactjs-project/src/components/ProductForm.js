@@ -24,6 +24,7 @@ const ProductForm = (props) => {
                 onChange={ (e)=> setProductName(e.target.value)}/>
                 <label htmlFor='category'>Choose a Category: </label>
                 <select id='category' onChange={(e)=> setCategory(e.target.value)}>
+                    <option selected>Select</option>
                     <option value='Electronics'>Electronics</option>
                     <option value='Food'>Food</option>
                     <option value='Skincare'>Skincare</option>

@@ -11,6 +11,8 @@ function App() {
     setProducts((prevState)=>{
       return [...prevState, { productId:id, price:price, productName:pName, category:category}]
     })
+
+    localStorage.setItem('products',JSON.stringify(products));
   }
 
   const filteredData=(category)=>{
@@ -21,23 +23,31 @@ function App() {
     return filterData;
   }
 
+  const deleteHandler=(id)=>{
+    setProducts((prevState)=>{
+      const updatedData=prevState.filter((ele)=>{ return ele.productId!==id} ) ;
+      return updatedData;
+    })
+    localStorage.setItem('products',JSON.stringify(products));
+  }
+
   return (
     <div className="App">
     <ProductForm getData={dataHandler} />
 
       <div className='list-item'><h3>Electronics</h3></div>
       <div className="show_item">
-        {filteredData("Electronics").map(ele => <ProductList price={ele.price}  productName={ele.productName}  category={ele.category}/>)}
+        {filteredData("Electronics").map(ele => <ProductList key={ele.productId} productId={ele.productId} price={ele.price}  productName={ele.productName}  category={ele.category} onDelete={deleteHandler}/>)}
       </div>
 
       <div className='list-item'><h3>Food</h3></div>
       <div className="show_item">
-        {filteredData("Food").map(ele => <ProductList price={ele.price}  productName={ele.productName}  category={ele.category}/>)}
+        {filteredData("Food").map(ele => <ProductList key={ele.productId} productId={ele.productId} price={ele.price}  productName={ele.productName}  category={ele.category} onDelete={deleteHandler}/>)}
       </div>
 
       <div className='list-item'><h3>Skincare</h3></div>
       <div className="show_item">
-        {filteredData("Skincare").map(ele => <ProductList price={ele.price}  productName={ele.productName}  category={ele.category}/>)}
+        {filteredData("Skincare").map(ele => <ProductList key={ele.productId} productId={ele.productId} price={ele.price}  productName={ele.productName}  category={ele.category} onDelete={deleteHandler}/>)}
       </div>
 
     </div>
