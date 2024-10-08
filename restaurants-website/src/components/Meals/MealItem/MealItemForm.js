@@ -5,7 +5,6 @@ import CartContext from '../../../store/cartContext';
 
 const MealItemForm = (props) => {
   const ctx = useContext(CartContext);
-
   const addItemToCart = (event) => {
     event.preventDefault();
     
