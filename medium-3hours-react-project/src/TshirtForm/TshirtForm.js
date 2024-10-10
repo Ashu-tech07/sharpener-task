@@ -17,7 +17,7 @@ const TshirtForm = (props) => {
   const addItemInContext = (event) => {
     event.preventDefault();
 
-    let item = {
+    let items = {
       tShirtName: tShirtName.current.value,
       description: description.current.value,
       price: price.current.value,
@@ -26,7 +26,7 @@ const TshirtForm = (props) => {
       small: small.current.value,
     };
 
-    cartCtx.addItem(item);
+    cartCtx.addItem(items);
   };
 
   return (

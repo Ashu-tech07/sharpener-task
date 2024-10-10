@@ -5,9 +5,9 @@ import "./CartProvider.css";
 
 const CartProvider = (props) => {
   const listURL =
-    "https://crudcrud.com/api/47548fad7f7d4dffad1ae8b3c1436c3e/list";
+    "https://crudcrud.com/api/ed58819215a141219c159185fa7aadfe/list";
   const cartURL =
-    "https://crudcrud.com/api/47548fad7f7d4dffad1ae8b3c1436c3e/cart";
+    "https://crudcrud.com/api/ed58819215a141219c159185fa7aadfe/cart";
 
   const [change, setChange] = useState(0);
   const [items, setItems] = useState([]);
@@ -106,6 +106,7 @@ const CartProvider = (props) => {
           "Content-Type": "application/json",
         },
       });
+      //  updatedItem.push(item); // update updated items
     }
 
     setItems(updatedItem);
@@ -143,6 +144,8 @@ const CartProvider = (props) => {
       if (size === "small" && Number(existingItem.items.small) > 0) {
         existingItem.items.small = Number(existingItem.items.small) - 1;
       }
+    }else{
+      // updatedItem.pop(existingItem);
     }
     await fetch(`${listURL}/${existingItem._id}`, {
       method: "PUT",
