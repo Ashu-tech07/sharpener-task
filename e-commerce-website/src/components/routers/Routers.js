@@ -3,16 +3,28 @@ import About from "../layout/About";
 import { Route, Routes } from "react-router-dom";
 import Home from "../layout/Home";
 import ContactUs from "../layout/ContactUs";
+import ProductPage from "../products/ProductPage";
 
 
+
+export const routePath = {
+  Home: "/",
+  Store: "/store",
+  About: "/about",
+  ContactUs: "/contact-us",
+  ProductPage: "/store/product",
+};
 const Routers = () => {
-  return <div>
-    <Routes>
-        <Route path ="/" element={<Home />} />
-        <Route path ="/store" element={<ProductList />} />
-        <Route path ="/about" element={<About />} />
-        <Route path="/contact-us" element={<ContactUs/> } />
-    </Routes>
-  </div>;
+  return (
+    <div>
+      <Routes>
+        <Route path={routePath.Home} element={<Home />} />
+        <Route path={routePath.Store} element={<ProductList />} />
+        <Route path={routePath.ProductPage} element={<ProductPage />} />
+        <Route path={routePath.About} element={<About />} />
+        <Route path={routePath.ContactUs} element={<ContactUs />} />
+      </Routes>
+    </div>
+  );
 };
 export default Routers;
