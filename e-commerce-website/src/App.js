@@ -1,22 +1,26 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
-import Header from "./components/header/Header";
-import Footer from "./components/layout/Footer";
-import CartProvider from "./components/store/CartProvider";
-import Routers from "./components/routers/Routers";
-function App() {
-  return (
-    <Router>
-      <CartProvider>
-        <Header></Header>
-        <Routers></Routers>
-        <Footer></Footer>
-      </CartProvider>
-    </Router>
-  );
-}
-export default App;
+// <<<<<<<<<<<<<<<<<----------Ecommerce----------->>>>>>>>>>>>>>>>
+// import React from "react";
+// import "./App.css";
+// import { BrowserRouter as Router } from "react-router-dom";
+// import Header from "./components/header/Header";
+// import Footer from "./components/layout/Footer";
+// import CartProvider from "./components/store/CartProvider";
+// import Routers from "./components/routers/Routers";
+// function App() {
+//   return (
+//     <Router>
+//       <CartProvider>
+//         <Header></Header>
+//         <Routers></Routers>
+//         <Footer></Footer>
+//       </CartProvider>
+//     </Router>
+//   );
+// }
+// export default App;
+
+
+// <<<<<<<<<<<<<<-------------MoviesList----------->>>>>>>>>>>>>>>
 
 // import React, { useState, useEffect, useCallback } from "react";
 // import AddMovie from "./components/movie/AddMovie";
@@ -102,3 +106,31 @@ export default App;
 //   );
 // }
 // export default App;
+
+
+// <<<<<<<<<<<<<---------SignUp and Authentication-------->>>>>>>>>>>>>>>>>
+
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import UserProfile from './components/profile/UserProfile';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import AuthForm from './components/auth/AuthForm';
+import MainPage from './components/layout/MainPage';
+
+function App() {
+  return (
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/auth' element={<AuthForm />} />
+          <Route path='/profile' element={<UserProfile />} />
+        </Routes>
+      </Layout>
+    </Router>
+  );
+}
+
+export default App;
+
