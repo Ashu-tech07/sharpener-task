@@ -117,15 +117,25 @@ import UserProfile from './components/profile/UserProfile';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthForm from './components/auth/AuthForm';
 import MainPage from './components/layout/MainPage';
+import { useContext } from 'react';
+import AuthContext from './components/store/auth-context';
 
 function App() {
+
+  const authCtx = useContext(AuthContext);
+
   return (
     <Router>
       <Layout>
         <Routes>
           <Route path='/' element={<MainPage />} />
-          <Route path='/auth' element={<AuthForm />} />
-          <Route path='/profile' element={<UserProfile />} />
+          
+          {!authCtx.isLoggedIn && <Route path="/auth" element={<AuthForm />} />}
+
+          {authCtx.isLoggedIn && (
+            <Route path="/profile" element={<UserProfile />} />
+          )}
+          <Route path="*" element={<MainPage />} />
         </Routes>
       </Layout>
     </Router>
