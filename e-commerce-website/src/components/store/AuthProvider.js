@@ -2,45 +2,59 @@ import React, { useEffect, useState } from "react";
 import AuthContext from "./auth-context";
 
 const AuthProvider = (props) => {
+
   const initialToken = localStorage.getItem("token");
-    const [token, setToken] = useState(initialToken);
+  const initialEmail = localStorage.getItem("email");
 
-    const userIsLoggedIn = !!token;
+  const [token, setToken] = useState(initialToken);
+  const [email, setEmail] = useState(initialEmail);
 
-    const loginHandler = (token) => {
-      setToken(token);
-      localStorage.setItem("token", token);
-    };
+  const userIsLoggedIn = !!token;
 
-    const logoutHandler = () => {
-      setToken(null);
-      localStorage.removeItem("token");
-    };
+  const loginHandler = (token,email) => {
 
-    useEffect(() => {
-      let logoutTimer;
-      if (userIsLoggedIn) {
-        logoutTimer = setTimeout(() => {
-          logoutHandler();
-          alert("You have been logged out due to inactivity.");
-        }, 5 * 60 * 1000);
-      }
-      return () => clearTimeout(logoutTimer);
-    }, [userIsLoggedIn]);
-  
+    //removeng @ and . from email
+    email = email.replace(/[^\w\s]/gi, "");
 
-    const contextValue = {
-      token: token,
-      isLoggedIn: userIsLoggedIn,
-      login: loginHandler,
-      logout: logoutHandler,
-    };
-    
-    return (
-      <AuthContext.Provider value={contextValue}>
-        {props.children}
-      </AuthContext.Provider>
-    );
+    setToken(token);
+    setEmail(email);
+    localStorage.setItem("token", token);
+    localStorage.setItem("email", email);
   };
-  
-  export default AuthProvider;
+
+  const logoutHandler = () => {
+    setToken(null);
+    setEmail(null);
+
+    localStorage.removeItem("token");
+    localStorage.removeItem('email');
+  };
+
+  useEffect(() => {
+    let logoutTimer;
+    if (userIsLoggedIn) {
+      logoutTimer = setTimeout(() => {
+        logoutHandler();
+        alert("You have been logged out due to inactivity.");
+      }, 5 * 60 * 1000);
+    }
+    return () => clearTimeout(logoutTimer);
+  }, [userIsLoggedIn]);
+
+
+  const contextValue = {
+    token: token,
+    email:email,
+    isLoggedIn: userIsLoggedIn,
+    login: loginHandler,
+    logout: logoutHandler,
+  };
+
+  return (
+    <AuthContext.Provider value={contextValue}>
+      {props.children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthProvider;
