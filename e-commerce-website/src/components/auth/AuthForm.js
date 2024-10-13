@@ -1,6 +1,6 @@
 import { useState, useRef, useContext } from "react";
 import classes from "./AuthForm.module.css";
-import { FIREBASE_KEY } from "../constants";
+import {SIGN_IN_WITH_PASSWORD_URL, SIGN_UP_URL } from "../constants";
 import AuthContext from "../store/auth-context";
 
 
@@ -12,7 +12,7 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const authCtx=useContext(AuthContext)
+  const authCtx = useContext(AuthContext)
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -25,11 +25,9 @@ const AuthForm = () => {
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + FIREBASE_KEY;
+      url = SIGN_IN_WITH_PASSWORD_URL;
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + FIREBASE_KEY;
+      url = SIGN_UP_URL;
     }
     fetch(url, {
       method: "POST",
