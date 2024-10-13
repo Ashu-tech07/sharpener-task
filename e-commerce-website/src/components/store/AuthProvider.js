@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthContext from "./auth-context";
 
 const AuthProvider = (props) => {
@@ -16,6 +16,18 @@ const AuthProvider = (props) => {
       setToken(null);
       localStorage.removeItem("token");
     };
+
+    useEffect(() => {
+      let logoutTimer;
+      if (userIsLoggedIn) {
+        logoutTimer = setTimeout(() => {
+          logoutHandler();
+          alert("You have been logged out due to inactivity.");
+        }, 5 * 60 * 1000);
+      }
+      return () => clearTimeout(logoutTimer);
+    }, [userIsLoggedIn]);
+  
 
     const contextValue = {
       token: token,
