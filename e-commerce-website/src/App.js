@@ -1,23 +1,28 @@
 // <<<<<<<<<<<<<<<<<----------Ecommerce----------->>>>>>>>>>>>>>>>
-// import React from "react";
-// import "./App.css";
-// import { BrowserRouter as Router } from "react-router-dom";
-// import Header from "./components/header/Header";
-// import Footer from "./components/layout/Footer";
-// import CartProvider from "./components/store/CartProvider";
-// import Routers from "./components/routers/Routers";
-// function App() {
-//   return (
-//     <Router>
-//       <CartProvider>
-//         <Header></Header>
-//         <Routers></Routers>
-//         <Footer></Footer>
-//       </CartProvider>
-//     </Router>
-//   );
-// }
-// export default App;
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "./components/header/Header";
+import Footer from "./components/layout/Footer";
+import CartProvider from "./components/store/CartProvider";
+import Routers from "./components/routers/Routers";
+import AuthProvider from "./components/store/AuthProvider";
+
+
+function App() {
+  return (
+    <Router>
+      <CartProvider>
+        <AuthProvider>
+        <Header></Header>
+        <Routers></Routers>
+        <Footer></Footer>
+        </AuthProvider>
+      </CartProvider>
+    </Router>
+  );
+}
+export default App;
 
 
 // <<<<<<<<<<<<<<-------------MoviesList----------->>>>>>>>>>>>>>>
@@ -110,37 +115,37 @@
 
 // <<<<<<<<<<<<<---------SignUp and Authentication-------->>>>>>>>>>>>>>>>>
 
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import UserProfile from './components/profile/UserProfile';
+// import { Routes, Route } from 'react-router-dom';
+// import Layout from './components/layout/Layout';
+// import UserProfile from './components/profile/UserProfile';
 
-import { BrowserRouter as Router } from 'react-router-dom';
-import AuthForm from './components/auth/AuthForm';
-import MainPage from './components/layout/MainPage';
-import { useContext } from 'react';
-import AuthContext from './components/store/auth-context';
+// import { BrowserRouter as Router } from 'react-router-dom';
+// import AuthForm from './components/auth/AuthForm';
+// import MainPage from './components/layout/MainPage';
+// import { useContext } from 'react';
+// import AuthContext from './components/store/auth-context';
 
-function App() {
+// function App() {
 
-  const authCtx = useContext(AuthContext);
+//   const authCtx = useContext(AuthContext);
 
-  return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<MainPage />} />
+//   return (
+//     <Router>
+//       <Layout>
+//         <Routes>
+//           <Route path='/' element={<MainPage />} />
           
-          {!authCtx.isLoggedIn && <Route path="/auth" element={<AuthForm />} />}
+//           {!authCtx.isLoggedIn && <Route path="/auth" element={<AuthForm />} />}
 
-          {authCtx.isLoggedIn && (
-            <Route path="/profile" element={<UserProfile />} />
-          )}
-          <Route path="*" element={<MainPage />} />
-        </Routes>
-      </Layout>
-    </Router>
-  );
-}
+//           {authCtx.isLoggedIn && (
+//             <Route path="/profile" element={<UserProfile />} />
+//           )}
+//           <Route path="*" element={<MainPage />} />
+//         </Routes>
+//       </Layout>
+//     </Router>
+//   );
+// }
 
-export default App;
+// export default App;
 

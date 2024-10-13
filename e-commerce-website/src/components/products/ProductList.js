@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
-import CartContext from '../store/CartContext';
+import CartContext from '../store/cart-context';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from '../routers/Routers';
 
