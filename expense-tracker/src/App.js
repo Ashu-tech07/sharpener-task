@@ -5,8 +5,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AuthContextProvider } from "./Store/AuthContext";
 import AuthContext from "./Store/AuthContext";
 import { useContext } from "react";
-import MainPage from "./components/MainPage/MainPage";
+
 import AuthForm from "./components/Auth/AuthForm";
+import HomePage from "./components/Home/HomePage";
 
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<HomePage />} />
             {!authCtx.isLoggedIn && (
               <Route path="/auth" element={<AuthForm />} />
             )}
             <Route path="/profile" element={<UserProfile />} />
-            <Route path="*" element={<MainPage/>}/>
+            <Route path="*" element={<HomePage/>}/>
           </Routes>
         </Layout>
       </Router>

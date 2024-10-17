@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useEffect } from "react";
 import AuthContext from "../../Store/AuthContext";
 import classes from "./ProfileForm.module.css";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,32 @@ const ProfileForm = () => {
 
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(
+      "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyA_8kdenpIeMebxIwDa8v3ED34bNDPgy5Y",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idToken: authCtx.token,
+        }),
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const userData = data.users[0];
+        fullNameInputRef.current.value = userData.displayName;
+        profileUrlInputRef.current.value = userData.photoUrl;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const cancelHandler = () => {
     navigate("/");
@@ -39,14 +65,13 @@ const ProfileForm = () => {
       .then((response) => response.json())
       .then((data) => {
         //Handle the successful response here
+        alert("Updated profile successfully!!")
         console.log(data);
       })
       .catch((error) => {
         // Handle any errors here
         console.error(error);
       });
-    fullNameInputRef.current.value = "";
-    profileUrlInputRef.current.value = "";
   };
 
 
