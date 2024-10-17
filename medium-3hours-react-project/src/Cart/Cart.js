@@ -54,7 +54,7 @@ const Cart = (props) => {
       </div>
       <div className={classes.actions}>
         <button
-          className={classes["buttton--alt"]}
+          className={classes["button--alt"]}
           onClick={props.hideCartHandler}
         >
           close
