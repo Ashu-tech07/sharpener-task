@@ -1,5 +1,19 @@
+import { useContext } from "react";
 import "./ExpenseList.css";
+import ExpenseContext from "../../Store/ExpenseContext";
+
 const ExpenseList = (props) => {
+
+  const expenseCtx = useContext(ExpenseContext);
+
+  const deleteHandler = (expenseId) => {
+    expenseCtx.removeExpense(expenseId);
+  };
+
+  const editHandler = (expense) => {
+    props.onEditExpense(expense);
+  };
+
   return (
     <div>
       <h3 className="expenses-header">Expenses:</h3>
@@ -7,10 +21,20 @@ const ExpenseList = (props) => {
         <p className="no-expenses">No expenses added yet.</p>
       ) : (
         <ul className="expenses-list">
-          {props.expenses.map((expenses, index) => (
+          {
+          props.expenses.map((expense, index) => (
             <li key={index} className="expense-item">
-              Money Spent: {expenses.moneySpent} <br></br> Description:
-              {expenses.description} <br></br> Category: {expenses.category}
+              <div>
+              Money Spent: {expense.moneySpent} <br></br> 
+              Description: {expense.description} <br></br> 
+              Category: {expense.category}
+              </div>
+              <div className="btn">
+                <button onClick={() => deleteHandler(expense.id)}>
+                  Delete
+                </button>
+                <button onClick={() => editHandler(expense)}>Edit</button>
+              </div>
             </li>
           ))}
         </ul>

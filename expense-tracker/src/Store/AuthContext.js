@@ -38,7 +38,7 @@ export const AuthContextProvider = (props)=>{
             logoutTimer=setTimeout(()=>{
                 logoutHandler();
                 alert("You have been logged out due to inactivity!!");
-            }, 20 * 60 *1000)
+            }, 60 * 60 *1000)
         }
 
         return ()=>clearTimeout(logoutTimer);

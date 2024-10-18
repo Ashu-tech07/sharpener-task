@@ -18,3 +18,10 @@
     display: block;
     margin-bottom: 5px;
   }
+
+  .btn {
+    margin-top: 14px;
+  }
+  .btn button {
+    margin-right: 5px;
+  }
