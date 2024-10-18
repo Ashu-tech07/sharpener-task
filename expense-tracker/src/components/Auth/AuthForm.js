@@ -81,7 +81,7 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        authCtx.login(data.idToken,data.email);
         // navigate("/");
       })
       .catch((err) => {

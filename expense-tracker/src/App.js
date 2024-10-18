@@ -8,6 +8,7 @@ import { useContext } from "react";
 import AuthForm from "./components/Auth/AuthForm";
 import HomePage from "./components/Home/HomePage";
 import ForgotPassword from "./components/Auth/ForgotPassword";
+import { ExpenseContextProvider } from "./Store/ExpenseContext";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   const authCtx = useContext(AuthContext);
 
   return (
+    <ExpenseContextProvider>
     <AuthContextProvider>
       <Router>
         <Layout>
@@ -30,6 +32,7 @@ function App() {
         </Layout>
       </Router>
     </AuthContextProvider>
+    </ExpenseContextProvider>
   );
 }
 export default App;

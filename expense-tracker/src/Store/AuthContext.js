@@ -2,26 +2,34 @@ import React, { createContext, useEffect, useState } from 'react';
 
 const AuthContext= createContext({
     token:"",
+    email:"",
     isLoggedIn: false,
-    login: (token)=>{},
+    login: (token,email)=>{},
     logout: ()=>{}
 });
 
 export const AuthContextProvider = (props)=>{
 
     const initialState=localStorage.getItem("token");
+    const initialEmail = localStorage.getItem("email");
+
     const [token, setToken]= useState(initialState);
+    const [email, setEmail] = useState(initialEmail);
 
     const userIsLoggedIn= !!token;
 
-    const loginHandler=(token)=>{
+    const loginHandler=(token, email)=>{
         setToken(token);
+        setEmail(email);
         localStorage.setItem("token",token);
+        localStorage.setItem("email", email);
     }
 
     const logoutHandler=()=>{
         setToken(null);
+        setEmail(null);
         localStorage.removeItem("token");
+        localStorage.removeItem("email");
     }
 
     useEffect(()=>{
@@ -30,7 +38,7 @@ export const AuthContextProvider = (props)=>{
             logoutTimer=setTimeout(()=>{
                 logoutHandler();
                 alert("You have been logged out due to inactivity!!");
-            }, 5 * 60 *1000)
+            }, 20 * 60 *1000)
         }
 
         return ()=>clearTimeout(logoutTimer);
@@ -38,6 +46,7 @@ export const AuthContextProvider = (props)=>{
 
     const contextValue={
         token:token,
+        email:email,
         isLoggedIn:userIsLoggedIn,
         login:loginHandler,
         logout: logoutHandler,
