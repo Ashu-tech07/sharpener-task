@@ -7,9 +7,16 @@
   .profile {
     display: flex;
   }
-  button {
+  .profile button {
     color: blue;
     background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .profile button:hover {
+    color: rgb(239, 239, 247);
+    background-color: rgb(25, 137, 241);
     border: none;
     cursor: pointer;
   }
