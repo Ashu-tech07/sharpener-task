@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from "react";
 
 import classes from "./AuthForm.module.css";
 import AuthContext from "../../Store/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import VerifyEmail from "./VerifyEmail";
 
 const AuthForm = () => {
@@ -11,7 +11,7 @@ const AuthForm = () => {
   const confirmPasswordInputRef = useRef();
 
   const authCtx = useContext(AuthContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
 
-    if(!isLogin){
+    if (!isLogin) {
       const enteredPassword2 = confirmPasswordInputRef.current?.value;
       if (
         enteredEmail &&
@@ -37,22 +37,22 @@ const AuthForm = () => {
         (enteredPassword === enteredPassword2)
       ) {
         setIsFormValid(true);
-      } else if(enteredPassword !== enteredPassword2) {
-          setError("Passwords didn't match");
-          
-        } else {
-          setError("All Fields Are Required");
-         
-        }
+      } else if (enteredPassword !== enteredPassword2) {
+        setError("Passwords didn't match");
+
+      } else {
+        setError("All Fields Are Required");
+
+      }
     }
 
     setIsLoading(true);
 
     let URL;
-    if (isLogin ) {
+    if (isLogin) {
       URL =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA_8kdenpIeMebxIwDa8v3ED34bNDPgy5Y";
-    } else if(isFormValid) {
+    } else if (isFormValid) {
       URL =
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA_8kdenpIeMebxIwDa8v3ED34bNDPgy5Y";
     }
@@ -82,7 +82,7 @@ const AuthForm = () => {
       })
       .then((data) => {
         authCtx.login(data.idToken);
-        navigate("/");
+        // navigate("/");
       })
       .catch((err) => {
         alert(err.message);
@@ -91,63 +91,70 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-       {authCtx.isLoggedIn ? (
+      {authCtx.isLoggedIn ? (
         <VerifyEmail />
       ) : (
         <div>
-      {error && <p style={{ color: "red", textAlign: "start" }}>*{error}</p>}
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
-      <form onSubmit={submitHandler}>
-        <div className={classes.control}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
-        </div>
-        <div className={classes.control}>
-          {isLogin && (
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                required
-                ref={passwordInputRef}
-              />
+          { error && <p style={{ color: "red", textAlign: "start" }}>*{error}</p> }
+          <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+          <form onSubmit={submitHandler}>
+            <div className={classes.control}>
+              <div>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" required ref={emailInputRef} />
+              </div>
             </div>
-          )}
-          {!isLogin && (
-            <div>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                required
-                ref={passwordInputRef}
-              />
-              <label htmlFor="password">confirm Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                rerquired
-                ref={confirmPasswordInputRef}
-              />
+            <div className={classes.control}>
+              {isLogin && (
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    required
+                    ref={passwordInputRef}
+                  />
+                </div>
+              )}
+              {!isLogin && (
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    required
+                    ref={passwordInputRef}
+                  />
+                  <label htmlFor="password">confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    rerquired
+                    ref={confirmPasswordInputRef}
+                  />
+                </div>
+              )}
             </div>
-          )}
+            {isLogin && (
+              <div className={classes.link}>
+                <Link to="/forgot-password">Forgot Password?</Link>
+              </div>
+            )}
+            <div className={classes.actions}>
+              {!isLoading && (
+                <button>{isLogin ? "Login" : "Create Account"}</button>
+              )}
+              {isLoading && <button >Sending request...</button>}
+              <button
+                type="button"
+                className={classes.toggle}
+                onClick={swithcAuthModeHandler}
+              >
+                {isLogin ? "Create new account" : "have an account? Login"}
+              </button>
+            </div>
+          </form>
         </div>
-        <div className={classes.actions}>
-          {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
-          )}
-          {isLoading && <button disabled={true} >Sending request...</button>}
-          <button
-            type="button"
-            className={classes.toggle}
-            onClick={swithcAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "have an account? Login"}
-          </button>
-        </div>
-      </form>
-      </div>
       )}
     </section>
   );
