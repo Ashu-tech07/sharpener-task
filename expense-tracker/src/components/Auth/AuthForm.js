@@ -137,7 +137,7 @@ const AuthForm = () => {
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {isLoading && <button>Sending request...</button>}
+          {isLoading && <button disabled={true} >Sending request...</button>}
           <button
             type="button"
             className={classes.toggle}
