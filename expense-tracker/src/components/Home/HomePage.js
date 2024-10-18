@@ -7,7 +7,6 @@ import AuthContext from "../../Store/AuthContext";
 const HomePage = () => {
 
   const authCtx = useContext(AuthContext);
-  console.log(authCtx.isLoggedIn);
 
   const navigate = useNavigate();
 

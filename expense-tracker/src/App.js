@@ -23,6 +23,7 @@ function App() {
             {!authCtx.isLoggedIn && (
               <Route path="/auth" element={<AuthForm />} />
             )}
+            
             <Route path="/profile" element={<UserProfile />} />
             <Route path="*" element={<HomePage/>}/>
           </Routes>

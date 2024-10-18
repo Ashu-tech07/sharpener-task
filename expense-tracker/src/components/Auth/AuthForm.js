@@ -3,6 +3,7 @@ import { useState, useRef, useContext } from "react";
 import classes from "./AuthForm.module.css";
 import AuthContext from "../../Store/AuthContext";
 import { useNavigate } from "react-router-dom";
+import VerifyEmail from "./VerifyEmail";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
@@ -90,6 +91,10 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
+       {authCtx.isLoggedIn ? (
+        <VerifyEmail />
+      ) : (
+        <div>
       {error && <p style={{ color: "red", textAlign: "start" }}>*{error}</p>}
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
@@ -142,6 +147,8 @@ const AuthForm = () => {
           </button>
         </div>
       </form>
+      </div>
+      )}
     </section>
   );
 };
