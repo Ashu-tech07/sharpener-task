@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import ExpenseTracker from "./components/ExpenseTracker/ExpenseTracker";
 import ProfileForm from "./components/Profile/ProfileForm";
 import MainNavigation from "./components/Layout/MainNavigation";
+import HomePage from "./pages/HomePage";
+import AuthForm from "./components/Auth/AuthForm";
 
 describe("Expense Tracker Component", () => {
   test("renders Money Spent as a test", () => {
@@ -21,7 +24,6 @@ describe("Expense Tracker Component", () => {
     const categoryElement = screen.getByText("Category:");
     expect(categoryElement).toBeInTheDocument();
   });
-
 });
 
 describe("Profile Form Component", () => {
@@ -68,5 +70,44 @@ describe("Main Navigation Component", () => {
     const logoutElement = screen.getByText("Logout");
     expect(logoutElement).toBeInTheDocument();
   });
+});
 
+describe("HomePage Component", () => {
+  test('renders "Welcome to Expense Tracker" if user logged in', () => {
+    render(<HomePage />);
+    const outputElement = screen.getByText("Welcome to Expense Tracker!!!", {
+      exact: false,
+    });
+    expect(outputElement).toBeInTheDocument();
+  });
+
+  test('renders "Your profile is incomplete" if user logged in', () => {
+    render(<HomePage />);
+    const outputElement = screen.queryByText("Your profile is incomplete", {
+      exact: false,
+    });
+    expect(outputElement).toBeInTheDocument();
+  });
+});
+
+describe("AuthForm Component", () => {
+  test('renders "confirm Password" if user clicks Create new account', () => {
+    render(<AuthForm />);
+    const buttonElement = screen.getByRole("Create new account");
+    userEvent.click(buttonElement);
+    const outputElement = screen.queryByText("confirm Password", {
+      exact: false,
+    });
+    expect(outputElement).toBeInTheDocument();
+  });
+  
+  test('renders "Forgot Password?" if user clicks Login', () => {
+    render(<AuthForm />);
+    const buttonElement = screen.getByRole("have an account? Login");
+    userEvent.click(buttonElement);
+    const outputElement = screen.queryByText("Forgot Password?", {
+      exact: false,
+    });
+    expect(outputElement).toBeInTheDocument();
+  });
 });
