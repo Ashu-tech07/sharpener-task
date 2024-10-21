@@ -43,7 +43,6 @@ export const ExpenseContextProvider = (props) => {
         });
 
         dispatch(setItems(expenseList));
-
         setExpenseItems(expenseList);
       } catch (error) {
         console.log(error);
@@ -71,7 +70,7 @@ export const ExpenseContextProvider = (props) => {
         .then((data) => {
           item={...item, id:data.name}
           setExpenseItems([...expenseItems, item]);
-
+          
           dispatch(addItem(item));
         })
         .catch((error) => {

@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import ExpenseList from "./ExpenseList.js";
 import "./ExpenseTracker.css";
 import ExpenseContext from "../../Store/ExpenseContext.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsPremium } from "../../Store/authSlice.js";
 
 
 const ExpenseTracker = () => {
@@ -12,11 +13,11 @@ const ExpenseTracker = () => {
   const [editExpense, setEditExpense] = useState(false);
   const [editExpenseId, setEditExpenseId] = useState(false);
 
+  const dispatch = useDispatch();
+
   const items = useSelector((state) => state.expenseStore.items);
-  const totalPrice = items.reduce(
-    (total, item) => total + Number(item.moneySpent),
-    0
-  );
+  
+  const totalPrice = items.reduce((total, item) => total + Number(item.moneySpent), 0);
 
 
   const expenseCtx = useContext(ExpenseContext);
@@ -68,6 +69,10 @@ const ExpenseTracker = () => {
     setCategory("");
   };
 
+  const premiumHandler = () => {
+    dispatch(setIsPremium());
+  };
+
   return (
     <div className="expense-tracker">
       <h2 className="header">Expense Tracker</h2>
@@ -117,7 +122,11 @@ const ExpenseTracker = () => {
           {editExpense ? "Edit Expense" : "Add Expense"}
         </button>
         {totalPrice >= 10000 && (
-          <button className="form-button" type="button">
+          <button
+            className="form-button"
+            type="button"
+            onClick={premiumHandler}
+          >
             Premium
           </button>
         )}

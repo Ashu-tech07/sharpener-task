@@ -1,3 +1,4 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import UserProfile from "./components/Profile/UserProfile";
@@ -9,13 +10,16 @@ import AuthForm from "./components/Auth/AuthForm";
 import HomePage from "./components/Home/HomePage";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import { ExpenseContextProvider } from "./Store/ExpenseContext";
+import { useSelector } from "react-redux";
 
 
 function App() {
 
   const authCtx = useContext(AuthContext);
+  const isDarkMode = useSelector((state) => state.theme.isDark);
 
   return (
+    <div className={`${isDarkMode ? "darkTheme" : ""}`}>
     <ExpenseContextProvider>
     <AuthContextProvider>
       <Router>
@@ -33,6 +37,7 @@ function App() {
       </Router>
     </AuthContextProvider>
     </ExpenseContextProvider>
+    </div>
   );
 }
 export default App;
