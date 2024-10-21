@@ -1,4 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { login, logout } from './authSlice';
 
 const AuthContext= createContext({
     token:"",
@@ -16,6 +18,8 @@ export const AuthContextProvider = (props)=>{
     const [token, setToken]= useState(initialState);
     const [email, setEmail] = useState(initialEmail);
 
+    const dispatch = useDispatch();
+
     const userIsLoggedIn= !!token;
 
     const loginHandler=(token, email)=>{
@@ -23,6 +27,8 @@ export const AuthContextProvider = (props)=>{
         setEmail(email);
         localStorage.setItem("token",token);
         localStorage.setItem("email", email);
+
+        dispatch(login({ email: email, token: token }))
     }
 
     const logoutHandler=()=>{
@@ -30,6 +36,8 @@ export const AuthContextProvider = (props)=>{
         setEmail(null);
         localStorage.removeItem("token");
         localStorage.removeItem("email");
+
+        dispatch(logout());
     }
 
     useEffect(()=>{

@@ -1,4 +1,6 @@
 import React, { createContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem, editItem, removeItem, setItems } from "./expenseSlice";
 
 const ExpenseContext = createContext({
   expenses: [],
@@ -10,6 +12,8 @@ const ExpenseContext = createContext({
 
 export const ExpenseContextProvider = (props) => {
   const [expenseItems, setExpenseItems] = useState([]);
+
+  const dispatch = useDispatch();
 
   let userEmail = localStorage.getItem("email");
   if (userEmail) {
@@ -37,6 +41,9 @@ export const ExpenseContextProvider = (props) => {
             moneySpent: expense.moneySpent,
           };
         });
+
+        dispatch(setItems(expenseList));
+
         setExpenseItems(expenseList);
       } catch (error) {
         console.log(error);
@@ -64,6 +71,8 @@ export const ExpenseContextProvider = (props) => {
         .then((data) => {
           item={...item, id:data.name}
           setExpenseItems([...expenseItems, item]);
+
+          dispatch(addItem(item));
         })
         .catch((error) => {
           console.log(error);
@@ -90,6 +99,8 @@ export const ExpenseContextProvider = (props) => {
                 expense.id === updatedExpense.id ? updatedExpense : expense
               )
             );
+
+            dispatch(editItem({ item: updatedExpense }))
           } else {
             console.error("error while updating item");
           }
@@ -116,6 +127,8 @@ export const ExpenseContextProvider = (props) => {
             setExpenseItems((prevExpenseItems) =>
               prevExpenseItems.filter((expense) => expense.id !== expenseId)
             );
+
+            dispatch(removeItem({ id: expenseId }));
           } else {
             console.error("error while deleting item");
           }
