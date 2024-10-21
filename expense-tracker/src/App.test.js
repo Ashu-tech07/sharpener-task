@@ -5,6 +5,7 @@ import ProfileForm from "./components/Profile/ProfileForm";
 import MainNavigation from "./components/Layout/MainNavigation";
 import HomePage from "./pages/HomePage";
 import AuthForm from "./components/Auth/AuthForm";
+import ExpenseContext from "./Store/ExpenseContext";
 
 describe("Expense Tracker Component", () => {
   test("renders Money Spent as a test", () => {
@@ -38,9 +39,20 @@ describe("Profile Form Component", () => {
     const profilePhotoElement = screen.getByText("Profile Photot URL");
     expect(profilePhotoElement).toBeInTheDocument();
   });
+  
+  test("renders post if request succeeds", async () => {
+    window.fetch = jest.fn();
+    window.fetch.mockResolvedValueOnce({
+      json: async () => [{ id: "p1", title: "First post" }],
+    });
+    render(<ProfileForm />);
+    const listItemElements = await screen.findAllByRole("listitem");
+    expect(listItemElements).not.toHaveLength(0);
+  });
 });
 
 describe("Main Navigation Component", () => {
+  
   test("renders Expense Tracker Logo as a test", () => {
     render(<MainNavigation />);
     const expenseTrackerLogoElement = screen.getByText("Expense Tracker");
@@ -100,7 +112,7 @@ describe("AuthForm Component", () => {
     });
     expect(outputElement).toBeInTheDocument();
   });
-  
+
   test('renders "Forgot Password?" if user clicks Login', () => {
     render(<AuthForm />);
     const buttonElement = screen.getByRole("have an account? Login");
@@ -109,5 +121,17 @@ describe("AuthForm Component", () => {
       exact: false,
     });
     expect(outputElement).toBeInTheDocument();
+  });
+});
+
+describe("ExpenseContext Component", () => {
+  test("renders post if request succeeds", async () => {
+    window.fetch = jest.fn();
+    window.fetch.mockResolvedValueOnce({
+      json: async () => [{ id: "p1", title: "First post" }],
+    });
+    render(<ExpenseContext />);
+    const listItemElements = await screen.findAllByRole("listitem");
+    expect(listItemElements).not.toHaveLength(0);
   });
 });
