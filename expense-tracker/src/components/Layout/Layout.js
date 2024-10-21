@@ -6,10 +6,10 @@ const Layout = (props) => {
   return (
     <>
       {/* <<-- Expense Tracker header-->> */}
-      {/* <MainNavigation /> */}
+      <MainNavigation />
 
       {/* <<--Shooping App header -->> */}
-      <MainHeader />
+      {/* <MainHeader /> */}
 
       <main>{props.children}</main>
     </>
