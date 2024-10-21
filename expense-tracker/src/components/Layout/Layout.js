@@ -1,10 +1,16 @@
 import React from "react";
 import MainNavigation from "./MainNavigation";
+import MainHeader from './MainHeader';
 
 const Layout = (props) => {
   return (
     <>
-      <MainNavigation />
+      {/* <<-- Expense Tracker header-->> */}
+      {/* <MainNavigation /> */}
+
+      {/* <<--Shooping App header -->> */}
+      <MainHeader />
+
       <main>{props.children}</main>
     </>
   );
