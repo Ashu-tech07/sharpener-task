@@ -63,17 +63,26 @@
     font-weight: 600;
     cursor: pointer;
 }
-.SGB1 {
+
+.forgot-btn {
     border: none;
     outline: none;
-    background: none;
-    color: white;
+    color: rgb(238, 23, 23);
     cursor: pointer;
     text-decoration: underline;
 }
 .signup-btn{
-    background-color: rgb(0, 56, 0);
+    background-color: rgb(6, 167, 6);
 }
-.LG{
-    background-color: rgb(3, 0, 52);
+.signup-btn:hover{
+    background-color: rgb(5, 66, 5);
+    color: white;
+}
+.login-btn{
+    background-color: rgb(6, 167, 6);
+}
+
+.login-btn:hover{
+    background-color: rgb(5, 66, 5);
+    color: white;
 }

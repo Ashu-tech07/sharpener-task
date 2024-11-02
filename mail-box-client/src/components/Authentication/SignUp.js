@@ -56,20 +56,20 @@ const SignUp = () => {
                     <div className="form-field">
                         <label className="label" htmlFor="useremail">User Email:</label>
                         <div className="input-div">
-                            <input required className="input" type="email" autoComplete="user-email" placeholder="User Email" onChange={e => setUemail(e.target.value)} />
+                            <input required className="input" type="email" id="useremail" placeholder="User Email" onChange={e => setUemail(e.target.value)} />
                         </div>
                     </div>
                     <div className="form-field">
                         <label className="label" htmlFor="userpassword">User Password:</label>
                         <div className="input-div">
-                            <input required className="input" type={passwordVisible ? "text" : "password"} autoComplete="new-password" placeholder="User Password" onChange={e => setUpassword(e.target.value)} />
+                            <input required className="input" type={passwordVisible ? "text" : "password"} id="userpassword" placeholder="User Password" onChange={e => setUpassword(e.target.value)} />
                             <FontAwesomeIcon icon={passwordVisible ? faEye : faEyeSlash} size="sm" style={{ color: "grey", cursor: "pointer", marginLeft:'5px' }} onClick={togglePasswordVisibility} />
                         </div>
                     </div>
                     <div className="form-field">
                         <label className="label" htmlFor="confirmpassword">Confirm Password:</label>
                         <div className="input-div">
-                            <input required className="input" type={cpasswordVisible ? "text" : "password"} autoComplete="confirm-password" placeholder="Confirm Password" onChange={e => setUcpassword(e.target.value)} />
+                            <input required className="input" type={cpasswordVisible ? "text" : "password"} id='confirmpassword' placeholder="Confirm Password" onChange={e => setUcpassword(e.target.value)} />
                             <FontAwesomeIcon icon={cpasswordVisible ? faEye : faEyeSlash} size="sm" style={{ color: "grey", cursor: "pointer", marginLeft:'5px' }} onClick={ctogglePasswordVisibility} />
                         </div>
                     </div>

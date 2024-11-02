@@ -5,6 +5,7 @@ import { app } from './components/Database/Firebase';
 import './App.css';
 import Welcome from './components/Welcome/Welcome';
 import SignUp from './components/Authentication/SignUp';
+import Login from './components/Authentication/Login';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Welcome />} />
+      <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Signup" element={<SignUp />} />
     </Routes>
   );
