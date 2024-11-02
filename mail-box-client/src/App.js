@@ -1,25 +1,28 @@
-
-import { Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import { app } from './components/Database/Firebase';
 import './App.css';
-import SignUp from './components/Pages/SignUp';
-import Welcome from './components/Pages/Welcome';
-import {useSelector} from 'react-redux'
-import ForgotPassword from './components/Pages/ForgotPassword';
+import Welcome from './components/Welcome/Welcome';
+import SignUp from './components/Authentication/SignUp';
 
-function App() {
 
-  const isAuth=useSelector(state=>state.auth.isAuthenticate)
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  console.log(isAuth);
+  useEffect(() => {
+    const auth = getAuth(app);
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
-    <>
-      <Routes>
-      <Route path='/' element={isAuth ? <Welcome /> : <SignUp />}></Route>
-      <Route path='/welcome' element={!isAuth ? <Welcome /> : <SignUp />} />
-      <Route path='/forgotPassword' element={!isAuth ? <ForgotPassword /> : <Welcome />} /> 
-      </Routes>
-      </>
+    <Routes>
+      <Route path="/" element={<Welcome />} />
+      <Route path="/Signup" element={<SignUp />} />
+    </Routes>
   );
-}
+};
 export default App;

@@ -1,0 +1,47 @@
+.WLC-DIV{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 99.5vh;
+}
+.welcome-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.WEL-HDR{
+    text-align: center;
+    text-wrap: wrap;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0 20px;
+}
+.WEL-TXT{
+    text-align: center;
+    text-wrap: wrap;
+    font-size: 16px;
+    margin: 30px;
+}
+.SGN-DIV{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 120px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 20px;
+    outline: none;
+    color: white;
+    background: none;
+    cursor: pointer;
+    background-color: rgb(0, 63, 0);
+}
