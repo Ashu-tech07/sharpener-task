@@ -1,0 +1,15 @@
+.Mail-Client-Div{
+    display: flex;
+}
+.MailBar{
+    margin: 10px;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+}
+@media screen and (width<= 770px) {
+    .Mail-Client-Div{
+        display: flex;
+        flex-direction: column;
+    }
+}

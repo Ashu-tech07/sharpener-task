@@ -1,0 +1,38 @@
+.Header-Nav{
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(85, 0, 85);
+    height: auto;
+}
+.Ldiv{
+    margin: 7px;
+}
+.LB{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    width: 80px;
+    height: 40px;
+    text-decoration: none;
+    color: white;
+}
+@media screen and (width<= 770px) {
+    .Header-Nav{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        margin: 10px;
+    }
+    .LB{
+        margin: 10px;
+    }
+}

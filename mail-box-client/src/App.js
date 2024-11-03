@@ -6,6 +6,8 @@ import './App.css';
 import Welcome from './components/Welcome/Welcome';
 import SignUp from './components/Authentication/SignUp';
 import Login from './components/Authentication/Login';
+import Compose from './components/MailClient/Compose';
+import MailClient from './components/MailClient/MailClient';
 
 
 const App = () => {
@@ -16,14 +18,18 @@ const App = () => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setIsLoggedIn(!!user);
     });
+
     return () => unsubscribe();
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Welcome />} />
+      <Route path="/" element={isLoggedIn ? <Navigate to="/MailBox" /> : <Welcome />} />
       <Route path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Signup" element={<SignUp />} />
+      <Route path="/MailBox/*" element={<MailClient setIsLoggedIn={setIsLoggedIn} />} >
+        <Route path="Compose" element={<Compose />} />
+      </Route>
     </Routes>
   );
 };

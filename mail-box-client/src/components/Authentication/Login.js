@@ -68,17 +68,19 @@ const Login = ({setIsLoggedIn}) => {
                             <FontAwesomeIcon icon={PasswordVisible ? faEye : faEyeSlash} size="sm" style={{ color: "grey", cursor: "pointer", marginLeft:'5px' }} onClick={togglePasswordVisibility} />
                         </div>
                     </div>
-                    <div className="login-div">
-                        <Link className="lgn" to="/Signup">
-                            Don't Have Any Account!
-                        </Link>
-                    </div>
-                    <div className="btn-div">
-                        <button className="forgot-btn" type="button" onClick={HandleResetPassword}>Forget Password</button>
-                    </div>
                     <div className="btn-div">
                         <button className="btn login-btn" type="submit">Log In</button>
                     </div>
+                    <div className="btn-div">
+                        <button className="forgot-btn" type="button" onClick={HandleResetPassword}>Forgot Password</button>
+                    </div>
+                    <div className="login-div">
+                        <Link className="lgn" to="/Signup">
+                            Don't Have Any Account! SignUp
+                        </Link>
+                    </div>
+                    
+                    
                 </form>
             </div>
         </>
