@@ -21,40 +21,40 @@ const Header = () => {
     }
     return (
         <>
-            <div className="Header-Nav">
+            <div className="header-nav">
                 <div className="Ldiv">
-                    <Link to="/MailBox/Compose" className="LB">
-                        <p>Mail</p>
+                    <Link to="/MailBox/Compose" className="link">
+                        Mail
                         <FontAwesomeIcon icon={faPen} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>
                 <div className="Ldiv">
-                    <Link to="/MailBox/Inbox" className="LB">
-                        <p>Inbox</p>
+                    <Link to="/MailBox/Inbox" className="link">
+                        Inbox
                         <FontAwesomeIcon icon={faInbox} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>
                 <div className="Ldiv">
-                    <Link to="/MailBox/Starred" className="LB">
-                        <p>Starred</p>
+                    <Link to="/MailBox/Starred" className="link">
+                        Starred
                         <FontAwesomeIcon icon={faStar} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>
                 <div className="Ldiv">
-                    <Link to="/MailBox/Sent" className="LB">
-                        <p>Sent</p>
+                    <Link to="/MailBox/Sent" className="link">
+                        Sent
                         <FontAwesomeIcon icon={faPaperPlane} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>
                 <div className="Ldiv">
-                    <Link to="/MailBox/Trash" className="LB">
-                        <p>Trash</p>
+                    <Link to="/MailBox/Trash" className="link">
+                        Trash
                         <FontAwesomeIcon icon={faTrash} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>
                 <div className="Ldiv">
-                    <Link onClick={HandleLogOut} className="LB">
-                        <p>Logout</p>
+                    <Link onClick={HandleLogOut} className="link">
+                        Logout
                         <FontAwesomeIcon icon={faRightFromBracket} size="sm" style={{ color: "#ffffff", }} />
                     </Link>
                 </div>

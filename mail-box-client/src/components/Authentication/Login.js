@@ -69,7 +69,7 @@ const Login = ({setIsLoggedIn}) => {
                         </div>
                     </div>
                     <div className="btn-div">
-                        <button className="btn login-btn" type="submit">Log In</button>
+                        <button className="signup-btn" type="submit">Log In</button>
                     </div>
                     <div className="btn-div">
                         <button className="forgot-btn" type="button" onClick={HandleResetPassword}>Forgot Password</button>

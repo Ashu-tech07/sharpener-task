@@ -27,6 +27,4 @@ export const mailSlice = createSlice({
   
   export const { setTo, setSubject, setEmailText, clearFields } = mailSlice.actions;
   
-  export const selectMail = (state) => state.mail;
-  
   export default mailSlice.reducer;

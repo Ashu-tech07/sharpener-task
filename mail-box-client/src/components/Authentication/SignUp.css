@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 30px 20px;
+    margin: 20px 10px;
 }
 .signup-heading{
     text-align: center;
@@ -17,7 +17,7 @@
     align-items: center;
 }
 .signup-form{
-    border: 2px solid white;
+    border: 2px solid rgb(22, 21, 21);
     border-radius: 20px;
 }
 .form-field{
@@ -53,16 +53,6 @@
     justify-content: center;
     align-items: center;
 }
-.btn{
-    border: 2px solid white;
-    border-radius: 20px;
-    outline: none;
-    width: 100px;
-    height: 40px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
 
 .forgot-btn {
     border: none;
@@ -73,16 +63,20 @@
 }
 .signup-btn{
     background-color: rgb(6, 167, 6);
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    font-weight: 600;
+    cursor: pointer;
 }
 .signup-btn:hover{
     background-color: rgb(5, 66, 5);
     color: white;
-}
-.login-btn{
-    background-color: rgb(6, 167, 6);
 }
 
 .login-btn:hover{
     background-color: rgb(5, 66, 5);
     color: white;
 }
+

@@ -8,6 +8,10 @@ import SignUp from './components/Authentication/SignUp';
 import Login from './components/Authentication/Login';
 import Compose from './components/MailClient/Compose';
 import MailClient from './components/MailClient/MailClient';
+import Inbox from './components/MailClient/Inbox';
+import Starred from './components/MailClient/Starred';
+import Sent from './components/MailClient/Sent';
+import Trash from './components/MailClient/Trash';
 
 
 const App = () => {
@@ -29,6 +33,10 @@ const App = () => {
       <Route path="/Signup" element={<SignUp />} />
       <Route path="/MailBox/*" element={<MailClient setIsLoggedIn={setIsLoggedIn} />} >
         <Route path="Compose" element={<Compose />} />
+        <Route path="Inbox" element={<Inbox />} />
+        <Route path="Starred" element={<Starred />} />
+        <Route path="Sent" element={<Sent />} />
+        <Route path="Trash" element={<Trash />} />
       </Route>
     </Routes>
   );
