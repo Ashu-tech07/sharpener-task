@@ -47,7 +47,7 @@ const Trash = () => {
                             <p>Message: {removeHTMLTags(message.emailtext)}</p>
                             <button onClick={() => handleDelete(message.id)} className="delete-btn btn">
                                 <FontAwesomeIcon icon={faTrashCan} size="sm" style={{ color: "#ffffff", }} />
-                                <p>Delete</p>
+                                Delete
                             </button>
                         </div>
                     ))}

@@ -47,7 +47,7 @@ const Starred = () => {
                             <p>Message: {removeHTMLTags(message.emailtext)}</p>
                             <button onClick={() => handleUnstar(message.id)} className="unstar btn">
                                 <FontAwesomeIcon icon={faStarOfLife} size="sm" style={{color: "#ffffff",}} />
-                                <p>Unstar</p>
+                                Unstar
                             </button>
                         </div>
                     ))}

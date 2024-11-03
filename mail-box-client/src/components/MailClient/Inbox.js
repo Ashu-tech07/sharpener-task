@@ -119,11 +119,11 @@ const Inbox = () => {
                             <div className="btn-group">
                                 <button onClick={() => StarMessage(message)} className="star-btn btn">
                                     <FontAwesomeIcon icon={faStar} size="sm" style={{ color: "#ffffff", }} />
-                                    <p>Star</p>
+                                    Star
                                 </button>
                                 <button onClick={() => TrashMessage(message)} className="trash-btn btn">
                                     <FontAwesomeIcon icon={faTrashCan} size="sm" style={{ color: "#ffffff", }} />
-                                    <p>Trash</p>
+                                    Trash
                                 </button>
                             </div>
                         </div>

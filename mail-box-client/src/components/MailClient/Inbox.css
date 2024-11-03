@@ -43,21 +43,49 @@
     margin: 5px;
     cursor: pointer;
 }
-
-.star-btn{
-    background-color: rgb(0, 0, 51);
+.btn:hover{
+    outline: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    background: none;
+    margin: 5px;
+    cursor: pointer;
 }
 
+.star-btn{
+    background-color: rgb(5, 5, 170);
+}
+
+.star-btn:hover{
+    background-color: rgb(4, 4, 77);
+}
 .trash-btn{
     background-color: rgb(65, 0, 55);
+}
+
+.trash-btn:hover{
+    background-color: rgb(44, 1, 38);
 }
 
 .unstar{
     background-color: rgb(0, 67, 89);
 }
+.unstar:hover{
+    background-color: rgb(2, 45, 59);
+}
 
 .delete-btn{
     background-color: rgb(77, 0, 0);
+}
+
+.delete-btn:hover{
+    background-color: rgb(48, 2, 2);
 }
 
 @media screen and (width <= 375px) {
