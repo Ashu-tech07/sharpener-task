@@ -39,6 +39,7 @@ const App = () => {
         <Route path="Trash" element={<Trash />} />
       </Route>
     </Routes>
+    
   );
 };
 export default App;

@@ -6,7 +6,6 @@ import { Outlet } from "react-router-dom";
 import './MailClient.css';
 
 const MailClient = ({ setIsLoggedIn }) => {
-    
     useEffect(() => {
         const Auth = getAuth(app);
         const unSubscribe = onAuthStateChanged(Auth, (user) => {
