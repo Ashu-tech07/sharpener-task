@@ -1,0 +1,11 @@
+.editor{
+    height: 150px;
+    width: 100%;
+    border-radius: 2px;
+    padding: 2px;
+    border-style: solid;
+    border-width: thin;
+    border-color: lightblue;
+    overflow-y: scroll;
+
+}
