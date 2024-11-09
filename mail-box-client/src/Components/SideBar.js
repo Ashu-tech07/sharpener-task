@@ -5,7 +5,7 @@ import "./SideBar.css";
 import InboxIcon from "@mui/icons-material/Inbox";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import { useDispatch } from "react-redux";
-import { showCompose, showSent } from "../store/uiSlice";
+import { showCompose, showSent,showInbox } from "../store/uiSlice";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const SideBar = () => {
   const showComposeMail = () => {
     dispatch(showCompose());
   };
-  const showInbox = () => {
+  const showInboxMail = () => {
     dispatch(showInbox());
   };
   const showsentBox = () => {
@@ -32,7 +32,7 @@ const SideBar = () => {
       <Button
         startIcon={<InboxIcon />}
         style={{ textTransform: "none" }}
-        onClick={showInbox}
+        onClick={showInboxMail}
       >
         Inbox
       </Button>
