@@ -1,0 +1,27 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+    text-align: center;
+    background-color: var(--footer-bg-color);
+    padding: 15px 10px 15px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.71);
+  }
+  
+  
+ a {
+    font-weight: 700;
+    color: var(--dark-blue);
+    text-decoration: none;
+  }
+  
+  strong {
+    padding-left: 5px;
+    color: var(--text-color);
+  }
+  
+ span {
+    color: var(--x-dark-orange);
+  }

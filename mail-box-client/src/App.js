@@ -5,6 +5,7 @@ import LogIn from "./Components/Login";
 import Home from "./Components/Home";
 import ViewMail from "./Components/ViewMail";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/viewMail/:id" element={<ViewMail />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
